@@ -31,17 +31,40 @@ Devise.setup do |config|
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
+
+  # Strategy using omniauth-oktaoauth gem
   require 'omniauth-oktaoauth'
   config.omniauth(:oktaoauth,
                 ENV['OKTA_CLIENT_ID'],
                 ENV['OKTA_CLIENT_SECRET'],
                 :scope => 'openid profile email',
                 :fields => ['profile', 'email'],
-                :client_options => {site: ENV['OKTA_ISSUER'], authorize_url: ENV['OKTA_ISSUER'] + "/v1/authorize", token_url: ENV['OKTA_ISSUER'] + "/v1/token"},
+                :client_options => {
+                  site: ENV['OKTA_ISSUER'], 
+                  authorize_url: ENV['OKTA_ISSUER'] + "/v1/authorize", 
+                  token_url: ENV['OKTA_ISSUER'] + "/v1/token"
+                },
                 :redirect_uri => ENV["OKTA_REDIRECT_URI"],
                 :auth_server_id => ENV['OKTA_AUTH_SERVER_ID'],
                 :issuer => ENV['OKTA_ISSUER'],
                 :strategy_class => OmniAuth::Strategies::Oktaoauth)
+
+  # Strategy using omniauth-okta gem
+  # require 'omniauth-okta'
+  # config.omniauth(:okta,
+  #               ENV['OKTA_CLIENT_ID'],
+  #               ENV['OKTA_CLIENT_SECRET'],
+  #               :scope => 'openid profile email',
+  #               :fields => ['profile', 'email'],
+  #               :client_options => {
+  #                 site: ENV['OKTA_URL'], 
+  #                 authorize_url: ENV['OKTA_ISSUER'] + '/v1/authorize', 
+  #                 token_url: ENV['OKTA_ISSUER'] + '/v1/token',
+  #                 user_info_url: ENV['OKTA_ISSUER'] + '/v1/userinfo'
+  #               },
+  #               :redirect_uri => ENV['OKTA_REDIRECT_URI'],
+  #               :issuer => ENV['OKTA_ISSUER'],
+  #               :strategy_class => OmniAuth::Strategies::Okta)
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
