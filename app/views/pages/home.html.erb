@@ -7,6 +7,6 @@
 
     <h2> Welcome to your store: <%=@store %> </h2>
 <% else %>
-<%= link_to 'Sign in via Okta', user_oktaoauth_omniauth_authorize_path, method: :post %>
-<%# <%= link_to 'Sign in via Okta', user_okta_omniauth_authorize_path, method: :post %> %>
+    <%= link_to 'Sign in via Okta', user_oktaoauth_omniauth_authorize_path, method: :post %>
+    <%# <%= link_to 'Sign in via Okta', user_okta_omniauth_authorize_path, method: :post %>
 <% end %>
