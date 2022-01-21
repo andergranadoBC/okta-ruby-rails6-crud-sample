@@ -9,9 +9,12 @@ class PagesController < ApplicationController
     
     # Loads store info from session or matches the selected store from the session info
     @store = session[:store]
-    if @store.nil?
-      if session[:groups].include? params[:store]
-        @store = params[:store]
+    if @store.nil? or @store != params[:store]
+      unless session[:groups].nil?
+        if session[:groups].include? params[:store]
+          @store = params[:store]
+          session[:store] = @store
+        end
       end
     end
   end
