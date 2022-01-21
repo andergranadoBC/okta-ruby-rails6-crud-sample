@@ -4,10 +4,25 @@ class PagesController < ApplicationController
   def home
     puts(session[:oktastate])
     @current_user = User.find_by(uid: session[:oktastate])
+    
+    @store = session[:store]
+    if @store.nil?
+      if session[:groups].include? params[:store]
+        @store = params[:store]
+      end
+    end
+
+    @groups = session[:groups]
+    @domain = session[:domain]
   end
 
   def account
     @current_user = User.find_by(uid: session[:oktastate])
     puts(session[:oktastate])
+  end
+
+  def client_selection
+    @current_user = User.find_by(uid: session[:oktastate])
+    @groups = session[:groups]
   end
 end

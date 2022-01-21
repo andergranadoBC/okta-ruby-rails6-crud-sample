@@ -1,0 +1,16 @@
+<h1>Client Selection</h1>
+<p>Find me in app/views/pages/client_selection.html.erb</p>
+<% if @current_user %>
+    <h1><%=@current_user.email %></h1>
+
+    <h2> Select your store: <%=@groups %> </h2>
+
+    <form action="/" method="get">
+        <label for="fname">Store:</label><br>
+        <input type="text" id="store" name="store"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+<% else %>
+<%# <%= link_to 'Sign in via Okta', user_okta_omniauth_authorize_path, method: :post %> %>
+<% end %>
