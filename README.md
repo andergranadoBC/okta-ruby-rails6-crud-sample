@@ -57,7 +57,9 @@ Open http://localhost:3000 to access the application.
 
 The PoC extends the original project changing the following:
 
-- Adds [omniauth-okta](https://github.com/omniauth/omniauth-okta) support along with existing [omniauth-oktaoauth](https://github.com/andrewvanbeek-okta/omniauth-oktaoauth) gem, being able to change between those when required
+- Adds [omniauth-okta](https://github.com/omniauth/omniauth-okta) support along with existing [omniauth-oktaoauth](https://github.com/andrewvanbeek-okta/omniauth-oktaoauth) gem, being able to change between those when required.
+- Adds some pages as PoC for specific behaviors for different user types.
+    - Uses custom claims gathered from the authentication info (i.e. OIDC Access/ID tokens) to see what type of user is authenticated and set a session with that specific info.
 
 ## License
 
