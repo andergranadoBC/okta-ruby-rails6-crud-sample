@@ -21,7 +21,7 @@ git clone https://github.com/andergranadoBC/okta-ruby-rails6-crud-sample.git
 
 ### In Okta
 
-Create a new OICD application in Admin Console with grant type as "Authorization Code" and save the generated client ID and secret.
+Create a new OICD application in Admin Console with grant type as "Authorization Code" and save the generated client ID and secret. Ensure that all the log in/out redirects are correcly setted both in app settings and in trusted origins.
 
 ### In the app
 
